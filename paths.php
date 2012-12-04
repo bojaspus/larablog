@@ -22,9 +22,7 @@
 */
 
 $environments = array(
-
-	'local' => array('http://localhost*', '*.dev'),
-
+	'local' => array('http://localhost*', '*.dev', '*.larablog.com'),
 );
 
 // --------------------------------------------------------------
@@ -146,3 +144,4 @@ function set_path($path, $value)
 {
 	$GLOBALS['laravel_paths'][$path] = $value;
 }
+
