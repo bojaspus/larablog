@@ -33,11 +33,17 @@ class Blog_Controller extends Base_Controller
 	 */
 	public function action_new()
 	{
+		if (!$this->isLoggedIn()) {
+			return Redirect::to_action('auth/login');
+		}
+		
 		if (Request::method() != 'POST') {
 			return View::make('blog.new', array());
 		}
 		
-		$owner_id = 1;
+		$user = $this->getUser();
+		
+		$owner_id = $user['id'];
 		$title = Input::get('title');
 		$body  = Input::get('body');
 		$ts = new \DateTime('now');
